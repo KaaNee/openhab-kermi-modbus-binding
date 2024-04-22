@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="modbus"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+	xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0 https://openhab.org/schemas/thing-description-1.0.0.xsd">
+	<channel-type id="current-temperature-channel">
+		<item-type>Number</item-type>
+		<label>Current temperature</label>
+		<description>Current temperature in heating storage</description>
+	</channel-type>
+	<channel-type id="target-temperature-channel">
+		<item-type>Number</item-type>
+		<label>Target temperature</label>
+		<description>Target temperature in heating storage</description>
+	</channel-type>
+</thing:thing-descriptions>

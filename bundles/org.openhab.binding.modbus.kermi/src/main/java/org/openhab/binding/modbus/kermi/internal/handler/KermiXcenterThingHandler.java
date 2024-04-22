@@ -57,15 +57,11 @@ import static org.openhab.binding.modbus.kermi.internal.modbus.KermiModbusConsta
 import static org.openhab.binding.modbus.kermi.internal.modbus.KermiModbusConstans.WORK_HOURS_REG_SIZE;
 import static org.openhab.binding.modbus.kermi.internal.modbus.KermiModbusConstans.WORK_HOURS_REG_START;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.modbus.handler.EndpointNotInitializedException;
 import org.openhab.binding.modbus.handler.ModbusEndpointThingHandler;
-import org.openhab.binding.modbus.kermi.internal.KermiConfiguration;
+import org.openhab.binding.modbus.kermi.internal.config.KermiXcenterConfiguration;
 import org.openhab.binding.modbus.kermi.internal.dto.AlarmDTO;
 import org.openhab.binding.modbus.kermi.internal.dto.ChargingCircuitDTO;
 import org.openhab.binding.modbus.kermi.internal.dto.EnergySourceDTO;
@@ -91,6 +87,10 @@ import org.openhab.core.thing.binding.ThingHandler;
 import org.openhab.core.types.Command;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * The {@link KermiXcenterThingHandler} Basic modbus connection to the Kermi device(s)
@@ -191,8 +191,7 @@ public class KermiXcenterThingHandler extends BaseBridgeHandler {
 
     private List<@Nullable PollTask> pollTasks = new ArrayList<>();
 
-    // private @Nullable PollTask testPoller;
-    private @Nullable KermiConfiguration config;
+    private @Nullable KermiXcenterConfiguration config;
 
     /**
      * Communication interface to the slave endpoint we're connecting to
@@ -265,7 +264,7 @@ public class KermiXcenterThingHandler extends BaseBridgeHandler {
     public void initialize() {
         updateStatus(ThingStatus.UNKNOWN);
         scheduler.execute(() -> {
-            KermiConfiguration localConfig = getConfigAs(KermiConfiguration.class);
+            KermiXcenterConfiguration localConfig = getConfigAs(KermiXcenterConfiguration.class);
             config = localConfig;
 
             if (config == null) {

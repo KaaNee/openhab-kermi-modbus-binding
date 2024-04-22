@@ -10,7 +10,7 @@
  *
  * SPDX-License-Identifier: EPL-2.0
  */
-package org.openhab.binding.modbus.kermi.internal;
+package org.openhab.binding.modbus.kermi.internal.config;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
 
@@ -23,5 +23,4 @@ import org.eclipse.jdt.annotation.NonNullByDefault;
 public class KermiConfiguration {
 
     public int refresh = 5000;
-    public boolean pvEnabled = false;
 }
